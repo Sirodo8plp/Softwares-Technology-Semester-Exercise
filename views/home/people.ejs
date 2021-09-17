@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nest's Marketplace</title>
+    <%- include("../components/scriptsAndLinks.ejs") %>
+    <link rel="stylesheet" href="../css/home/people.css">
+</head>
+
+<body>
+    <%- include("../components/navigation-bar") %>
+    <main class="wrap main">
+        <svg class="left-button">
+            <use href="../symbol-defs.svg#icon-list"></use>
+        </svg>
+        <section class="left">
+            <div class="left-content">
+                <h2 class="left-title">Filters</h2>
+                <a href="/home/people" class="removeFilters">Remove Filters</a>
+                <div class="left-SuggestedTech" id="left-SuggestedTech">
+                    <h3 class="containerTitle title-1">Custom Tags</h3>
+                </div>
+                <div class="left-categories">
+                    <h3 class="containerTitle title-2">Predefined Tags</h3>
+                    <a href="#" class="category">Computer Science</a>
+                    <a href="#" class="category">Finances</a>
+                    <a href="#" class="category">Human Resources</a>
+                    <a href="#" class="category">Law Counselling</a>
+                </div>
+                <div class="left-subcategories">
+                    <h3 class="containerTitle title-3">Rating</h3>
+                    <label for="rating">Choose minimum rating value</label>
+                    <input type="range" name="rating" id="rating" min="0" max="5" step="0.1" autocomplete="off">
+                    <p>Current rating: Any</p>
+                </div>
+                <div class="left-subcategories">
+                    <h3 class="containerTitle title-3"># of Completed Projects</h3>
+                    <label for="completedProjectsNumber">Choose the number of completed Projects</label>
+                    <input type="number" name="completedProjectsCounter" id="completedProjectsCounter" autocomplete="off" min="0" step="1">
+                </div>
+            </div>
+        </section>
+        <section class="page">
+            
+        </section>
+
+    </main>
+    <script src="../javascript/findLoggedInUser.js"></script>
+    <script src="../javascript/navbar.js"></script>
+    <script src="../javascript/People/filterDevelopers.js"></script>
+    <script src="../javascript/People/showPeople.js"></script>
+</body>
+
+</html>

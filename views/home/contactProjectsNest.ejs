@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ProjectsNest</title>
+    <%- include("../components/scriptsAndLinks.ejs") %>
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/contactForm.css">
+</head>
+
+<body>
+    <%- include("../components/navigation-bar") %>
+    <% if(typeof user === 'undefined') { %>
+    <section class='loggedOutSection'>
+        <h1 class="title">You must be signed in in order to contact us!</h1>
+        <div class="formContainer">
+            <form action="/loginForContact" method="POST" autocomplete="off">
+                <label for="username" class="inputLabel">Username</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="username" name="username"
+                        aria-describedby="basic-addon3">
+                </div>
+                <label for="password" class="inputLabel">Password</label>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" id="password" name="password"
+                        aria-describedby="basic-addon3">
+                </div>
+                <button type="submit" class="btn btn-dark">Sign In</button>
+            </form>
+        </div>
+        <a href="" id='signUpLink' class="link-dark signUpLink">Don't have an account? Sign up!</a>
+    </section>
+    <%} else { %>
+    <section class='loggedOutSection'>
+        <h1 class="title">Fill in the following form and send us your request</h1>
+        <div class="formContainer">
+            <form action="/appendUserContactMessage" method="POST" autocomplete="off">
+                <input type="hidden" name="username" value=<%user.id%>>
+                <div class="mb-3">
+                    <label for="contactMessage" class="form-label" id="userRequest" name='userRequest'>Write your message and press the Send button!</label>
+                    <textarea class="form-control" id="contactMessage" name="contactMessage" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark">Send</button>
+            </form>
+        </div>
+    </section>
+    <% } %>
+    <script src="../javascript/findLoggedInUser.js"></script>
+    <script src="../javascript/contact.js"></script>
+    <script src="../javascript/navbar.js"></script>
+</body>
+</html>

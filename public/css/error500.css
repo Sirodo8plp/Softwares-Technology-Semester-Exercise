@@ -1,0 +1,69 @@
+@import "navbar.css";
+
+:root {
+    --text-color: rgb(43,0,30);
+    --button-bg : #04009A;
+    --button-color: #dedede;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html{
+    box-sizing: inherit;
+}
+
+body{
+    background-color: rgb(246, 246, 246);
+}
+
+html,body{
+    height: 100%;
+    font-size: clamp(11px, 14 + 2vw, 16px);
+}
+
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-row-gap: 2rem;
+}
+
+.image-container {
+    justify-self: center;
+}
+
+.image {
+    max-width: 100%;
+    width: 100%;
+}
+
+.message {
+    font-size: 2.25rem;
+    color: var(--text-color);
+    white-space: pre-line;
+    text-align: center;
+    justify-self: center;
+}
+
+.button-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.button,
+.button:link,
+.button:hover{
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    text-decoration: none;
+    padding: 1.25em;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+}

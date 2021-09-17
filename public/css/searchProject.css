@@ -1,0 +1,261 @@
+@import "./general/base.css";
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+:root {
+    --color-layer-1: #222831;
+    --color-layer-2: #393E46;
+    --color-layer-3: #00ADB5;
+    --color-layer-4: #EEEEEE;
+
+    --section-background: #EEEEEE;
+    --section-color-1: #162b30;
+    --section-color-2: #00ADB5;
+    --section-color-3: #88becc;
+
+    --title-background-1: #007880;
+    --title-background-2: #882100;
+    --title-background-3: #6163a0;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: inherit;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/*fluid typography*/
+/******************************/
+
+html {
+    font-size: 14px;
+}
+
+@media screen and (min-width: 320px) {
+    html {
+        font-size: calc(14px + 2 * ((100vw - 250px) / 680));
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/******************************/
+
+.image-figure {
+    width: 100%;
+    height: 17.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    width: max-content;
+    padding: 0.5em 4em 0.5em 4em;
+    background-color: white;
+    color: black;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    font-size: 2rem;
+}
+
+.navbar-style {
+    background-color: var(--color-layer-1);
+}
+
+.nav-link {
+    color: var(--color-layer-4) !important;
+}
+
+.nav-link:hover {
+    color: var(--color-layer-3) !important;
+}
+
+.text-area {
+    height: 100%;
+}
+
+.navbar-toggler-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+p {
+    margin-bottom: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.information-left { 
+    width: 50%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 2rem;
+    grid-row-gap: 3rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.information-title{
+    grid-column: 1/4;
+    text-align: center;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding: 0.25em;
+    background-color: var(--color-layer-3);
+    color: var(--color-layer-4);
+}
+
+.project-date,
+.project-offer {
+    display: flex;
+    align-items: center;
+}
+
+.p-svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-layer-2);
+    margin-right: 2rem;
+}
+
+.description-link,
+.description-link:link,
+.description-link:visited {
+    grid-column: 1/4;
+    width: max-content;
+    padding: 0.5em 2em 0.5em 2em;
+    margin: 0 auto;
+    background-color: var(--color-layer-1);
+    color: white;
+    border-radius: 1rem;
+    transition: all .25s ease;
+}
+
+.description-link:hover {
+    text-decoration: none !important;
+    border-radius: 0;
+}
+
+.project-offers {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+.offer {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    padding: 1em;
+    border-radius: 0.5rem;
+    background-color: var(--color-layer-2);
+    color: var(--color-layer-4);
+}
+
+.offer-accepted {
+    background-color: var(--color-layer-4) !important;
+    color: var(--color-layer-2) !important;
+    border: 1px solid var(--color-layer-2);
+}
+
+.project-description {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+.actions {
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding-bottom: 3rem;
+    text-align: center;
+}
+
+.actions input {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.action-label {
+    display: block;
+}
+
+.Searchprofile{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.searchDevFigure{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0;
+    margin-right: 2rem;
+}
+
+.searchDevFigure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recLink{
+    margin-left: 2rem;
+    padding: 0.3rem;
+    background-color: black;
+    color: white;
+    border: 1px solid transparent;
+    transition: all .4s ease;
+}
+
+.recLink:hover{
+    text-decoration:  none !important;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}

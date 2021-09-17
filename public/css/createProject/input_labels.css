@@ -1,0 +1,153 @@
+/*****************/
+/******TITLE******/
+/*****************/
+
+.input-label-title {
+    top: 35%;
+    left: 40%;
+    transform: translate(-5%,-50%);
+}
+
+
+.input-label-title::after{
+    content: "Title of your project";
+    position: absolute;
+    top: 45%;
+    left: 0%;
+    transform: translate(0%,-50%);
+    transition: all .4s ease;
+    z-index: 1;
+    color: #222831;
+}
+
+@media only screen and (max-width: 101.5625em){
+    .input-label-title::after {
+        left: 0.5%;
+    }
+}
+
+@media only screen and (max-width: 91.5625em){
+    .input-label-title::after {
+        left: 1%;
+    }
+}
+
+@media only screen and (max-width: 81.25em){
+    .input-label-title::after {
+        left: 1.5%;
+    }
+}
+
+@media only screen and (max-width: 70.625em){
+    .input-label-title::after {
+        left: 2%;
+    }
+}
+
+@media only screen and (max-width: 61.5625em){
+    .input-label-title::after {
+        left: 2.5%;
+    }
+}
+
+@media only screen and (max-width: 52.1875em){
+    .input-label-title::after {
+        left: 3.5%;
+    }
+}
+
+@media only screen and (max-width: 41.875em){
+    .input-label-title::after {
+        content: "TITLE" !important;
+    }
+}
+
+@media only screen and (max-width: 32.5em){
+    .input-label-title{
+        top: 33%;
+    }
+
+    .input-label-title::after {
+        left: 4.25%;
+    }
+}
+
+.input:focus + .input-label-title::after {
+    content: "TITLE";
+} 
+
+.input-focused-label-title{
+    color: #222831;
+    opacity: 1;
+    font-size: 0.7rem;
+}
+
+/************************/
+/**TEXTAREA DESCRIPTION**/
+/************************/
+
+.description {
+    width: 100% !important;
+    height: min-content;
+    resize: none;
+}
+
+.input-label-description{
+    top: 13%;
+    left: 2%;
+}
+
+.input-label-description::after{
+    content: "Describe your project";
+    position: absolute;
+    top: 45%;
+    left: 0%;
+    transform: translate(0%,-50%);
+    transition: all .4s ease;
+    z-index: 1;
+    color: #222831;
+}
+
+.description:focus + .input-label-description::after {
+    transform: translate(0%,-250%) !important;
+    content: "Description";
+}
+
+.input-label-textarea-with-text{
+    color: #222831;
+    opacity: 1;
+    font-size: 0.7rem;
+}
+
+.input-label-textarea-with-text::after{
+    transform: translate(0%,-250%) !important;
+    content: "Description" !important;
+}
+
+.input-label-secondary{
+    position: absolute;
+    width: max-content;
+    left: 25%;
+    top: 38%;
+    transform: translate(-15%,-5%);
+    text-align: left;
+    color: var(--color-shade-2);
+}
+
+.input-price:hover  + .input-label-secondary{
+    color: var(--color-shade-3) !important;
+}
+
+.input-price:focus + .input-label-secondary{
+    top: 30%;
+}
+
+.input-label-secondary-text{
+    font-size: 0.7rem !important;
+    top: 30% !important;
+    color: var(--color-shade-1);
+}
+
+.input-price-text {
+    background-color: white !important;
+}

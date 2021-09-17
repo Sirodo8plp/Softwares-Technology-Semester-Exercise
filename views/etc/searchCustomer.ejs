@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's Profile</title>
+    <%- include("../components/scriptsAndLinks.ejs") %>
+    <link rel="stylesheet" href="../css/searchCustomer.css">
+</head>
+
+<body>
+    <div class="content">
+        <%- include("../components/navigation-bar") %>
+        <div class="image-container">
+            <figure class="image-figure">
+                <img src="../images/profile.png" alt="ProfileImage" class="image">
+            </figure>
+        </div>
+        <h2 class="username">FirstName SecondName</h2>
+        <section class="main-feautures-container">
+            <div class="profile-information">
+                <div class="title-container card-1">
+                    <h2 class="title">Personal Information</h2>
+                </div>
+                <p class="information-paragraph">Lorem Ipsum</p>
+                <p class="information-paragraph">Lorem Ipsum</p>
+                <p class="information-paragraph">Lorem Ipsum</p>
+                <p class="information-paragraph">Lorem Ipsum</p>
+                <p class="information-paragraph">Lorem Ipsum</p>
+            </div>
+            <div class="ratings">
+                <div class="title-container card-2">
+                    <h2 class="title">Rating Score</h2>
+                </div>
+                <svg class="svg-star">
+                    <use href="../symbol-defs.svg#icon-star-full"></use>
+                </svg>
+                <p class="rating-score">4.7 / 5</p>
+                <p class="rating-count">Total ratings: 25</p>
+            </div>
+            <div class="projects">
+                <div class="title-container card-3">
+                    <h2 class="title">Projects</h2>
+                </div>
+                <h3 class="projects-information">Completed Projects</h3>
+                <p class="projects-count">4</p>
+                <h3 class="projects-information">Projects in Progress</h3>
+                <p class="projects-count">5</p>
+            </div>
+        </section>
+        <section class="skillbar">
+            <div class="skillbar-title-container">
+                <h2 class="skillbar-title">Skills</h2>
+            </div>
+            <p class="skill">HTML</p>
+            <p class="skill">React</p>
+            <p class="skill">Angular</p>
+            <p class="skill">Typescript</p>
+        </section>
+        <h2 class="comments-title">Recent Comments</h2>
+        <section class="comments">
+            <div class="comment-container">
+                <div class="comment-leftPart">
+                    <figure class="comment-figure">
+                        <img src="../images/profile.png" alt="CommentPicture" class="comment-image">
+                    </figure>
+                    </figure>
+                    <div class="commentator">
+                        <p>By GKostandose</p>
+                    </div>
+                </div>
+                <p class="comment-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis rem explicabo, sequi ducimus
+                    reiciendis eos alias quam neque aspernatur ad illum id sed placeat. Enim maxime harum quae rem unde.
+                </p>
+            </div>
+            <div class="comment-container">
+                <div class="comment-leftPart">
+                    <figure class="comment-figure">
+                        <img src="../images/profile.png" alt="CommentPicture" class="comment-image">
+                    </figure>
+                    <div class="commentator">
+                        <p>By GKostandose</p>
+                    </div>
+                </div>
+                <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis rem explicabo,
+                    sequi ducimus reiciendis eos alias quam neque aspernatur ad illum id sed placeat. Enim maxime harum
+                    quae rem unde.
+                </p>
+            </div>
+        </section>
+        <section class="actions">
+            <a href="#" class="action">Recommend Project</a>
+            <a href="#" class="action">Rate Developer</a>
+        </section>
+    </div>
+    <script src="../javascript/searchCustomer.js"></script>
+    <script src="../javascript/navbar.js"></script>
+</body>
+
+</html>

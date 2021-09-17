@@ -1,0 +1,51 @@
+.customer-profiles-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 1rem;
+    grid-template-rows: auto;
+    height: auto;
+}
+
+.customer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.customer-figure{
+    width: 100%;
+    height: 10rem;
+    overflow: hidden;   
+    margin: 0 auto;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.customer-figure img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.delete-link:link,
+.delete-link:visited,
+.delete-link{
+    background-color: black;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    transition: all .25s ease;
+}
+
+.delete-link:hover {
+    text-decoration: none;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+}

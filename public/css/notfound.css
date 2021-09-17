@@ -1,0 +1,100 @@
+@import "./general/base.css";
+
+:root {
+    --text-color: rgb(37,37,37);
+    --button-bg : #04009A;
+    --button-color: #dedede;
+    --error-color: #FF4342;
+    --nav-link-color: #EDEDED;
+    --nav-link-hover-color: rgb(37,37,37);
+    --home-route-link-color: #165A6D;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html{
+    box-sizing: inherit;
+}
+
+html,body{
+    height: 100%;
+    font-size: clamp(11px, 14 + 2vw, 16px);
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-row-gap: 2rem;
+}
+
+.image-container {
+    justify-self: center;
+}
+
+.image {
+    max-width: 100%;
+    width: 100%;
+}
+
+.message {
+    font-size: 2.25rem;
+    color: var(--text-color);
+    white-space: pre-line;
+    text-align: center;
+    justify-self: center;
+    font-weight: bold;
+    color: var(--error-color);
+}
+
+.message span {
+    color: var(--text-color);
+}
+
+.button-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.button,
+.button:link,
+.button:hover{
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    text-decoration: none;
+    padding: 1.25em;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.navbar {
+    background-color: var(--error-color) !important;
+}
+
+.nav-link {
+    color: var(--nav-link-color) !important;
+}
+
+.nav-link:hover {
+    color: var(--nav-link-hover-color) !important;
+}
+
+.HomeRouteLink{
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    background-color: white !important;
+    color: black !important;
+    text-align: center !important;
+    border-radius: 5rem;
+}
+
+.HomeRouteLink:hover {
+    background-color: var(--home-route-link-color) !important;
+    color: white !important;
+}

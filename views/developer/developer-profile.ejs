@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="favicon" sizes="16x16" href="../favicons/customer/favicon-16x16.png">
+    <link rel="favicon" sizes="32x32" href="../favicons/customer/favicon-32x32.png">
+    <link rel="android-chrome" sizes="192x192" href="../favicons/customer/android-chrome-192x192.png">
+    <link rel="android-chrome" sizes="512x512" href="../favicons/customer/android-chrome-512-512.png">
+    <link rel="icon" href="../favicons/customer/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%- include("../components/scriptsAndLinks") %>
+    <link rel="stylesheet" href="../css/developer/profile_information.css">
+</head>
+
+<% if(user.theme === "Dark") {%>
+
+<body class="dark">
+    <% }else{%>
+
+    <body>
+        <% } %>
+        <%- include("developer-navigation") %>
+        <main class="main-container">
+            <% if(!user.verified){%>
+            <section class="validation">
+                Please, check your email in order to verify your account!
+            </section>
+            <% } %>
+            <section class="profile-information">
+                <figure class="profileImage">
+                    <img src="../images/<%=user.profileImage%>" alt="profileImage">
+                </figure>
+                <% user.privacy.forEach(privacySetting => { %>
+                <% if(privacySetting.setting === true){ %>
+                <p class="visible" id=<%=privacySetting.header%>><%=privacySetting.header%></p>
+                <p class="visible"><%=user[privacySetting.objKey]%></p>
+                <% }else{ %>
+                <p class="hidden" id=<%=privacySetting.header%>><%=privacySetting.header%></p>
+                <p class="hidden"><%=user[privacySetting.objKey]%></p>
+                <% } %>
+                <% }); %>
+                <p class="visible-help">Visible</p>
+                <p class="hidden-help">Hidden</p>
+                <embed src="../cvs/<%=user.cvName%>" width="800px" height="2100px" />
+                <form action="/developer/changeCv" method="POST" class="cuvi" enctype="multipart/form-data">
+                    <label for="cv">Upload or Refresh your Curriculum Vitae</label>
+                    <input type="file" name="cv" id="cv" autocomplete="off"
+                        accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf">
+                    <input type="submit" value="Submit" class="submit-button" id="submitcv">
+                </form>
+                <form action="/developer/changeImage" method="POST" class="cuvi cuvi-2" enctype="multipart/form-data">
+                    <label for="profileImage">Upload or Refresh your profile image.</label>
+                    <input type="file" name="profileImage" id="profileImage" autocomplete="off"
+                        accept="image/*">
+                    <input type="submit" value="Submit" class="submit-button" id="submitcv">
+                </form>
+                <div class="options">
+                    <a href="/developer/options" class="navLink">Change Account Privacy Settings</a>
+                    <a href="/developer/general" class="navLink">Return to General tab</a>
+                </div>
+            </section>
+        </main>
+        <script src="../javascript/developer/developer-profile.js"></script>
+        <%- include("developer-footer") %>

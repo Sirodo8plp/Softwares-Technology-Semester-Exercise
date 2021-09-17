@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=project.title%></title>
+    <%- include("../components/scriptsAndLinks.ejs") %>
+    <link rel="icon" href="/media/favicon.ico">
+    <link rel="stylesheet" href="/css/searchProject.css">
+</head>
+
+<body>
+    <div class="content">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-style">
+            <a class="navbar-brand brand-name mx-auto" href="/"><img class="logo-img" src="/media/nest.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ma-auto ">
+                    <li class="nav-item bordernav">
+                        <a class="nav-link active HomeRouteLink" href="/">Home</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/contactProjectsNest">Contact Us</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/home/marketplace">Marketplace</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/home/people">People</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav ml-auto " id="navbarProfileHolder">
+                    <div class="searchTab" id="searchResultsTab">
+                    </div>
+                    <form action="search" method="post" class="d-flex">
+                        <div class="input-group">
+
+                            <input type="text" class="form-control text-area" placeholder="Search" id="searchInput"
+                                autocomplete="off">
+
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </nav>
+        <figure class="image-figure">
+                <img src="/images/project.png" alt="ProfileImage" class="image">
+                <figcaption class="caption"><%=project.title%></figcaption>
+        </figure>
+        <section class="main-feautures-container">
+            <div class="information-left">
+                <h2 class="information-title">Basic Information</h2>
+                <p class="project-date">
+                    <svg class="p-svg">
+                        <use href="/symbol-defs.svg#icon-calendar"></use>
+                    </svg>
+                    <%=project.date%>
+                </p>
+                <p>Project Owner: daskblade23</p>
+                <p class="project-offer">
+                    <svg class="p-svg">
+                        <use href="/symbol-defs.svg#icon-coins"></use>
+                    </svg>
+                    <%=project.offer%>$
+                </p>
+                <p>Developer: <%=project.developer === "" ? "-" : project.developer%></p>
+                <p>Category: <%=project.category%></p>
+                <p>Subcategory: <%=project.subcategory%></p>
+                <a href="#description" class="description-link">View Description</a>
+            </div>
+            <div class="project-offers">
+                <h2 class="information-title">Offers</h2>
+                <%if(project.offers.length === 0){ %>
+                    <p>The project has not received any offers yet.</p>
+                <%}else{project.offers.forEach(offer => {%>
+                    <div class="offer <%=offer.accepted === true? offer-accepted : ''%>">
+                        <p>Username: <%=offer.username%></p>
+                        <p>Offer: <%=offer.offer %></p>
+                        <p>Accepted: <%=offer.accepted === true ? "Yes" : "No"%></p>
+                    </div>
+                <%})}%>
+            </div>
+            <div class="project-description" id="description">
+                <h2 class="information-title">Description</h2>
+                <p><%=project.description%></p>
+            </div>
+            <div class="actions">
+                <div>
+                    <h4>Recommend this project</h4>
+                    <label class="action-label" for="searchDev">Search Developers</label>
+                    <input type="text" name="searchDev" id="searchDev">
+                    <div class="recommendationSearchList" id="recommendationList">
+                        
+                    </div>
+                </div>
+                <form method="POST" action="/project/insertOffer/<%=project._id%>">
+                    <h4>Make an offer</h4>
+                    <label class="action-label" for="developerOffer">Write your offer and press submit</label>
+                    <input type="text" name="developerOffer" id="developerOffer">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </section>
+    </div>
+    <input type="hidden" id="projectid" value="<%=project._id%>">
+    <script src="/javascript/navbar.js"></script>
+    <script src="/javascript/findLoggedInUser.js"></script>
+    <script src="/javascript/viewSearchResult/projectRecommend.js"></script>
+</body>
+
+</html>

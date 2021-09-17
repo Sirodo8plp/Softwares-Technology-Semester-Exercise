@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="favicon" sizes="16x16" href="../favicons/customer/favicon-16x16.png">
+    <link rel="favicon" sizes="32x32" href="../favicons/customer/favicon-32x32.png">
+    <link rel="android-chrome" sizes="192x192" href="../favicons/customer/android-chrome-192x192.png">
+    <link rel="android-chrome" sizes="512x512" href="../favicons/customer/android-chrome-512-512.png">
+    <link rel="icon" href="../favicons/customer/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%- include("../components/scriptsAndLinks") %>
+    <link rel="stylesheet" href="../css/developer/profile_general_page.css">
+</head>
+
+<% if(user.theme === "Dark") {%>
+
+    <body class="dark">
+        <% }else{%>
+    
+        <body>
+            <% } %>
+    <%- include("developer-navigation") %>
+    <main class="main-container">
+        <% if(!user.verified){%>
+        <section class="validation">
+            Please, check your email in order to verify your account!
+        </section>
+        <% } %>
+
+        <label for="projects-click" class="title">Projects</label>
+        <input type="checkbox" name="projects-click" id="projects-click">
+        <section class="projects" id="projects-container">
+        </section>
+    
+        <label for="notifications-click" class="title">Notifications</label>
+        <input type="checkbox" name="notifications-click" id="notifications-click">
+        <section class="projects" id="notifications-container">
+        </section>
+
+        <label for="ratings-click" class="title">Ratings</label>
+        <input type="checkbox" name="ratings-click" id="ratings-click">
+        <section class="projects" id="ratings-container">
+        </section>
+
+        <label for="comments-click" class="title">Comments</label>
+        <input type="checkbox" name="comments-click" id="comments-click">
+        <section class="projects" id="comments-container">
+        </section>
+    </main>
+    <script src="../javascript/developer/developer-general2.js"></script>
+    <%- include("developer-footer") %>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="icon" href="media/favicon.ico">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/login-signup.css">
+</head>
+
+<body onload="check()">
+    <!--Navigation Bar -->
+    <%- include("../components/navigation-bar") %>
+    <div class="container" style="font-family: 'Montserrat', sans-serif;" id="container">
+        <div class="form-container sign-up-container">
+            <form class="form1" action="" method="post" name='signupForm' id='signupForm' autocomplete="off">
+                <h1>Create Account</h1>
+                <input class="input-form" type="text" name="name" id='name' placeholder="Name" />
+                <input class="input-form" type="text" name="surname" id='surname' placeholder="Surname" />
+                <input class="input-form" type="text" name="username" id='username' placeholder="Username" />
+                <input class="input-form" type="password" name="password" id='password' placeholder="Password" />
+                <input class="input-form" type="email" name="email" id='email' placeholder="Email" />
+                <input class="input-form" type="date" name="dateofbirth" id='dateofbirth'>
+                <table style="margin-bottom:7px;">
+                    <tr>
+                        <td style="padding-right:10px;">
+                            <select name="role" id="role">
+                                <option hidden disabled selected value>Role</option>
+                                <option value="developer">Developer</option>
+                                <option value="customer">Customer</option>
+                            </select>
+                        </td>
+                        <td style="padding-left:10px;">
+                            <select name="gender" id="gender">
+                                <option hidden disabled selected value>Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <label for="profileImage" class="profileImage-label">Upload an image</label>
+                <input type="file" name="profileImage" id="profileImage" class="profileImage-input" accept="image/*">
+                <textarea name="bio" id="bio" cols="30" rows="5" placeholder="Describe yourself!"></textarea>
+                <button class="button1" id='signUpButton'>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form class="form1" action="/login" method="POST" autocomplete="off" id='loginForm' name='loginForm'>
+                <h1>Sign in</h1>
+                <input class="input-form" type="text" name="username" id='loginUsername' placeholder="Username" />
+                <input class="input-form" type="password" name="password" id='loginPassword' placeholder="Password" />
+                <a class="a1" href="#">Forgot your password?</a>
+                <button class="button1" id='signInButton'>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="button1" class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="button1" class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="error" id='error' name='error'>
+        <p>All fields are required!</p>
+    </section>
+    <%if(typeof notfound !== 'undefined' && notfound){ %>
+    <section class="error" id="notfound">
+        <p>Your username or password is incorrect.Please,try again.</p>
+    </section>
+    <%} %>
+    <%if(typeof userExists !== 'undefined'){ %>
+    <section class="error" id="userExists">
+        <p><%=existMessage %></p>
+    </section>
+    <%} %>
+    <section class="developer-secondary" id="developer-secondary-info">
+        <form action="#" id="developerSecondaryInfo" name="developerSecondaryInfo">
+            <h3>Choose some tags to include in your profile</h3>
+            <div class="tags">
+                <label for="Computer_Science">Computer Science</label>
+                <input autocomplete="off" type="checkbox" name="Computer_Science" id="Computer_Science">
+                <label for="Finances">Finances</label>
+                <input autocomplete="off" type="checkbox" name="Finances" id="Finances">
+                <label for="Human_Resources">Human Resources</label>
+                <input autocomplete="off" type="checkbox" name="Human_Resources" id="Human_Resources">
+                <label for="Law_Counselling">Law Counselling</label>
+                <input autocomplete="off" type="checkbox" name="Law_Counselling" id="Law_Counselling">
+            </div>
+            <label for="custom_tags" class="custom-tags-label">You can create your own tags too!</label>
+            <input autocomplete="off" class="custom-tags-input" type="text" name="custom_tags" id="custom_tags"
+                placeholder="For example: HTML,CSS3,JavaScript,...">
+            <label for="cv" class="cv-label">You can also upload your Curriculum Vitae</label>
+            <input autocomplete="off" type="file" name="cv" id="cv" class="cv-input" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+        text/plain, application/pdf">
+            <h3>Try adding some links to show off your hard work</h3>
+            <div class="links">
+                <p>#</p>
+                <p>Description</p>
+                <p>Link</p>
+                <svg class="numberSVG">
+                    <use href="../symbol-defs.svg#icon-number"></use>
+                </svg>
+                <input autocomplete="off" type="text" name="description-link1" id="description-link1">
+                <input autocomplete="off" type="text" name="link-external1" id="link-external1">
+                <svg class="numberSVG">
+                    <use href="../symbol-defs.svg#icon-number1"></use>
+                </svg>
+                <input autocomplete="off" type="text" name="description-link2" id="description-link1">
+                <input autocomplete="off" type="text" name="link-external2" id="link-external2">
+                <svg class="numberSVG">
+                    <use href="../symbol-defs.svg#icon-number2"></use>
+                </svg>
+                <input autocomplete="off" type="text" name="description-link3" id="description-link1">
+                <input autocomplete="off" type="text" name="link-external3" id="link-external3">
+                <svg class="numberSVG">
+                    <use href="../symbol-defs.svg#icon-number3"></use>
+                </svg>
+                <input autocomplete="off" type="text" name="description-link4" id="description-link1">
+                <input autocomplete="off" type="text" name="link-external4" id="link-external4">
+                <svg class="numberSVG">
+                    <use href="../symbol-defs.svg#icon-number4"></use>
+                </svg>
+                <input autocomplete="off" type="text" name="description-link5" id="description-link1">
+                <input autocomplete="off" type="text" name="link-external5" id="link-external5">
+            </div>
+        </form>
+    </section>
+    <script src="../javascript/findLoggedInUser.js"></script>
+    <script src="../javascript/navbar.js"></script>
+    <script src="javascript/login-signup.js"></script>
+</body>
+
+</html>

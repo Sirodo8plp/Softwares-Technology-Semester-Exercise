@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="icon" href="media/favicon.ico">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/login-signup.css">
+</head>
+<body onload="check()">
+    <!--Navigation Bar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-style">
+        <a class="navbar-brand brand-name mx-auto" href="index.jsp"><img class="logo-img" src="media/nest.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ma-auto ">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.jsp">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.jsp">About</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto ">
+                <form class="d-flex">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <li class="nav-item bordernav">
+                    <a class="nav-link active" id="login" onclick="redirectfunct(this.id)">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="signup" onclick="redirectfunct(this.id)">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="font-family: 'Montserrat', sans-serif;" id="container">
+        <div class="form-container sign-up-container">
+            <form class="form1" action="" method="post" name='signupForm' id='signupForm' autocomplete="off">
+                <h1>Create Account</h1>
+                <input class="input-form" type="text" name="name" id='name' placeholder="Name" />
+                <input class="input-form" type="text" name="surname" id='surname' placeholder="Surname" />
+                <input class="input-form" type="text" name="username" id='username' placeholder="Username" />
+                <input class="input-form" type="password" name="password" id='password' placeholder="Password" />
+                <input class="input-form" type="email" name="email" id='email' placeholder="Email" />
+                <input class="input-form" type="date" name="dateofbirth" id='dateofbirth'>
+                <table style="margin-bottom:7px;">
+                    <tr>
+                        <td style="padding-right:10px;">
+                            <select name="role" id="role">
+                                <option hidden disabled selected value>Role</option>
+                                <option value="developer">Developer</option>
+                                <option value="customer">Customer</option>
+                            </select>
+                        </td>
+                        <td style="padding-left:10px;">
+                            <select name="gender" id="gender">
+                                <option hidden disabled selected value>Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <button class="button1" id='signUpButton'>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form class="form1" action="login" method="post" autocomplete="off" id='loginForm' name='loginForm'>
+                <h1>Sign in</h1>
+                <input class="input-form" type="text" name="username" id='loginUsername' placeholder="Username" />
+                <input class="input-form" type="password" name="password" id='loginPassword' placeholder="Password" />
+                <a class="a1" href="#">Forgot your password?</a>
+                <button class="button1" id='signInButton'>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="button1" class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="button1" class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="error" id='error' name='error'>
+        <p>All fields are required!</p>
+    </section>
+    <%if(typeof notfound !== 'undefined' && notfound){ %>
+        <section class="error" id="notfound">
+            <p>Your username or password is incorrect.Please,try again.</p>
+        </section>
+    <%} %>
+    <%if(typeof userExists !== 'undefined'){ %>
+        <section class="error" id="userExists">
+            <p><%=existMessage %></p>
+        </section>
+    <%} %>
+    <script src="javascript/login-signup.js"></script>
+    <script src="../javascript/navbar.js"></script>
+</body>
+</html>

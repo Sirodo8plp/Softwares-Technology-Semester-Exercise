@@ -1,0 +1,82 @@
+@import url("../general/profile_bone_structure.css");
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    height: 5em;
+}
+
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    border-radius: 1em;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    margin-top: 2em;
+}
+
+.slider::before,
+.slider::after {
+    position:absolute;
+    z-index: 10;
+    content: "";
+    height: 1.5em;
+    width: 1.5em;
+    transition: .4s;
+    background-size: 1.5em 1.5em;
+    -webkit-filter: grayscale(1) invert(1);
+    filter: grayscale(1) invert(1);
+}
+
+.slider::before {
+    left: 5%;
+    top: 50%;
+    transform: translate(-5%,-50%);
+    background-image: url("../../SVG/eye-blocked.svg");
+}
+
+.slider::after {
+    right: 5%;
+    top: 50%;
+    transform: translate(5%,-50%);
+    background-image: url("../../SVG/eye.svg");
+}
+
+.ball{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translate(-3%,-50%);
+    background-color: var(--color-layer-2);
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    transition: all .4s;
+}
+
+.settingInput:checked + span > span{
+    left: 97%;
+    transform: translate(-97%,-50%);
+}
+
+.settingInput + span {
+    background-color: var(--color-layer-1);
+}
+
+.settingInput:checked + span {
+    background-color: var(--color-layer-3);
+}

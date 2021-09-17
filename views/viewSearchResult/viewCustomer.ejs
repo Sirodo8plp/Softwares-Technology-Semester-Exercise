@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=user.username%>'s Profile</title>
+    <%- include("../components/scriptsAndLinks.ejs") %>
+    <link rel="icon" href="/media/favicon.ico">
+    <link rel="stylesheet" href="/css/searchProfile.css">
+</head>
+
+<body>
+    <div class="content">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-style">
+
+            <a class="navbar-brand brand-name mx-auto" href="/"><img class="logo-img" src="/media/nest.png"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ma-auto ">
+                    <li class="nav-item bordernav">
+                        <a class="nav-link active HomeRouteLink" href="/">Home</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/contactProjectsNest">Contact Us</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/home/marketplace">Marketplace</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/home/people">People</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+
+                <div class="navbar-nav ml-auto " id="navbarProfileHolder">
+                    <div class="searchTab" id="searchResultsTab">
+                    </div>
+                    <form action="search" method="post" class="d-flex">
+                        <div class="input-group">
+
+                            <input type="text" class="form-control text-area" placeholder="Search" id="searchInput"
+                                autocomplete="off">
+
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </nav>
+        <div class="image-container">
+            <figure class="image-figure">
+                <img src="/images/<%=user.profileImage%>" alt="ProfileImage" class="image">
+            </figure>
+        </div>
+        <% if(user.privacy[0].setting === true){%>
+        <h2 class="username"><%=user.username%></h2>
+        <%}else {%>
+            <h2 class="username">Username: Locked</h2>
+        <% } %>
+        <section class="main-feautures-container">
+            <div class="profile-information">
+                <div class="title-container card-1">
+                    <h2 class="title">Personal Information</h2>
+                </div>
+                <% if(user.privacy[1].setting === true){%>
+                <p class="information-paragraph">Name: <%=user.name%></p>
+                <%}else {%>
+                <p class="information-paragraph">Name: Locked</p>
+                <% } %>
+                <% if(user.privacy[2].setting === true){%>
+                <p class="information-paragraph">Last Name: <%=user.surname%></p>
+                <%}else {%>
+                <p class="information-paragraph">Last Name: Locked</p>
+                <% } %>
+                <% if(user.privacy[3].setting === true){%>
+                <p class="information-paragraph">Email: <%=user.email%></p>
+                <%}else {%>
+                <p class="information-paragraph">Email: Locked</p>
+                <% } %>
+                <% if(user.privacy[4].setting === true){%>
+                <p class="information-paragraph">Date of Birth: <%=user.birthdate%></p>
+                <%}else {%>
+                <p class="information-paragraph">Date of Birth: Locked</p>
+                <% } %>
+                <% if(user.privacy[5].setting === true){%>
+                <p class="information-paragraph">Gender: <%=user.gender%></p>
+                <%}else {%>
+                <p class="information-paragraph">Gender: Locked</p>
+                <% } %>
+            </div>
+            <div class="projects">
+                <div class="title-container card-3">
+                    <h2 class="title">Projects</h2>
+                </div>
+                <% for(let i=0; i< projects.length; i++){%>
+                <div class="projectContainer">
+                    <p class="information-paragraph">Title: <%=projects[i].title%></p>
+                    <p class="information-paragraph">Status: <%=projects[i].status%></p>
+                </div>
+                <%}%>
+            </div>
+        </section>
+    </div>
+    <script src="/javascript/navbar.js"></script>
+    <script src="/javascript/findLoggedInUser.js"></script>
+</body>
+
+</html>

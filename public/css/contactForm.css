@@ -1,0 +1,64 @@
+@import "./general/base.css";
+
+:root {
+    --color-layer-1: #222831;
+    --color-layer-2: #393E46;
+    --color-layer-3: #00ADB5;
+    --color-layer-4: #EEEEEE;
+
+    --gradient-text-color: #e6f4f1;
+    --gradient-color-1: #00adb5;
+    --gradient-color-2: #005c71;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html{
+    box-sizing: inherit;
+}
+
+html,body{
+    height: 100%;
+    font-size: clamp(11px, 14 + 2vw, 16px);
+}
+
+body {
+    background-color: var(--color-layer-4);
+}
+
+.loggedOutSection {
+    width: 100%;
+    height: 100%;
+}
+
+.title{
+    text-align: center;
+}
+
+.inputLabel {
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    color: var(--gradient-text-color) !important;
+}
+
+.formContainer{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    background: linear-gradient(to right, var(--gradient-color-2),var(--gradient-color-1));
+}
+
+.signUpLink{
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    text-decoration: underline;
+}

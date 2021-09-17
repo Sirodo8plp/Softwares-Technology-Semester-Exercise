@@ -1,0 +1,1 @@
+/*navbar code was added to navbar.js */

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=developer.username%>'s Profile</title>
+    <%- include("../components/scriptsAndLinks.ejs") %>
+    <link rel="stylesheet" href="/css/searchDeveloper.css">
+</head>
+
+<body>
+    <div class="content">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-style">
+
+            <a class="navbar-brand brand-name mx-auto" href="/"><img class="logo-img" src="/media/nest.png"></a>
+        
+        
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+        
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ma-auto ">
+                    <li class="nav-item bordernav">
+                        <a class="nav-link active HomeRouteLink" href="/">Home</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/contactProjectsNest">Contact Us</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/home/marketplace">Marketplace</a>
+                    </li>
+                    <li class="nav-item bordernav">
+                        <a class="nav-link" href="/home/people">People</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+        
+                <div class="navbar-nav ml-auto " id="navbarProfileHolder">
+                    <div class="searchTab" id="searchResultsTab">
+                    </div>
+                    <form action="search" method="post" class="d-flex">
+                        <div class="input-group">
+        
+                            <input type="text" class="form-control text-area" placeholder="Search" id="searchInput" autocomplete="off">
+        
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        
+            </div>
+        </nav>
+        <div class="image-container">
+            <figure class="image-figure">
+                <img src="/images/<%=developer.profileImage%>" alt="ProfileImage" class="image">
+            </figure>
+        </div>
+        <% if(developer.privacy[0].setting === true){%>
+            <h2 class="username"><%=developer.username%></h2>
+            <%}else {%>
+                <h2 class="username">Username: Locked</h2>
+            <% } %>
+        <section class="main-feautures-container">
+            <div class="profile-information">
+                <div class="title-container card-1">
+                    <h2 class="title">Personal Information</h2>
+                </div>
+                <% if(developer.privacy[1].setting === true){%>
+                    <p class="information-paragraph">Name: <%=developer.name%></p>
+                    <%}else {%>
+                    <p class="information-paragraph">Name: Locked</p>
+                    <% } %>
+                    <% if(developer.privacy[2].setting === true){%>
+                    <p class="information-paragraph">Last Name: <%=developer.surname%></p>
+                    <%}else {%>
+                    <p class="information-paragraph">Last Name: Locked</p>
+                    <% } %>
+                    <% if(developer.privacy[3].setting === true){%>
+                    <p class="information-paragraph">Email: <%=developer.email%></p>
+                    <%}else {%>
+                    <p class="information-paragraph">Email: Locked</p>
+                    <% } %>
+                    <% if(developer.privacy[4].setting === true){%>
+                    <p class="information-paragraph">Date of Birth: <%=developer.birthdate%></p>
+                    <%}else {%>
+                    <p class="information-paragraph">Date of Birth: Locked</p>
+                    <% } %>
+                    <% if(developer.privacy[5].setting === true){%>
+                    <p class="information-paragraph">Gender: <%=developer.gender%></p>
+                    <%}else {%>
+                    <p class="information-paragraph">Gender: Locked</p>
+                    <% } %>
+            </div>
+            <div class="ratings">
+                <div class="title-container card-2">
+                    <h2 class="title">Rating Score</h2>
+                </div>
+                <svg class="svg-star">
+                    <use href="/symbol-defs.svg#icon-star-full"></use>
+                </svg>
+                <p class="rating-score"><%=ratingScore.ratingScore%> / 5</p>
+                <p class="rating-count">Total ratings: <%=ratingScore.totalRatings%></p>
+            </div>
+            <div class="projects">
+                <div class="title-container card-3">
+                    <h2 class="title">Projects</h2>
+                </div>
+                <h3 class="projects-information">Completed Projects</h3>
+                <p class="projects-count"><%=projects.completedProjectsCount%></p>
+                <h3 class="projects-information">Projects in Progress</h3>
+                <p class="projects-count"><%=projects.inProgressProjectsCount%></p>
+            </div>
+        </section>
+        <section class="skillbar">
+            <div class="skillbar-title-container">
+                <h2 class="skillbar-title">Skills</h2>
+            </div>
+            <p class="skill"><%=developer.predefinedTags === "" ? "No predefined tags were selected" : developer.predefinedTags%></p>
+            <p class="skill"><%=developer.customTags === "" ? "No custom tags were added" : developer.customTags%></p>
+        </section>
+        <%if(comments.length > 0){%>
+            <h2 class="comments-title">Recent Comments</h2>
+            <section class="comments">
+                <%if(comments.length === 1) {%>
+                    <div class="comment-container">
+                        <div class="comment-leftPart">
+                            <figure class="comment-figure">
+                                <img src="/images/<%=comments[0].profileImage%>" alt="CommentPicture" class="comment-image">
+                            </figure>
+                            <div class="commentator">
+                                <p style="text-align: center;">By <%=comments[0].fromUser%></p>
+                            </div>
+                        </div>
+                        <p class="comment-text">
+                            <%=comments[0].comment%>
+                        </p>
+                    </div>
+                <%}else if(comments.length === 2)comments.forEach(comment => {%>
+                    <div class="comment-container">
+                        <div class="comment-leftPart">
+                            <figure class="comment-figure">
+                                <img src="/images/<%=comment.profileImage%>" alt="CommentPicture" class="comment-image">
+                            </figure>
+                            <div class="commentator">
+                                <p style="text-align: center;">By <%=comment.fromUser%></p>
+                            </div>
+                        </div>
+                        <p class="comment-text">
+                            <%=comment.comment%>
+                        </p>
+                    </div>
+                <%})%>
+            </section>
+        <%}%>
+        <%if(ratings.length > 0){%>
+            <h2 class="comments-title">Recent Ratings</h2>
+            <section class="comments">
+                <%if(ratings.length === 1) {%>
+                    <div class="comment-container">
+                        <div class="comment-leftPart">
+                            <svg class="svg-star">
+                                <use href="/symbol-defs.svg#icon-star-full"></use>
+                            </svg>
+                            <div class="commentator">
+                                <p style="text-align: center;">By <%=ratings[0].fromUser%> <br><%=ratings[0].rating%>/5</p>
+                            </div>
+                        </div>
+                        <p class="comment-text">
+                            <%=ratings[0].comment%>
+                        </p>
+                    </div>
+                <%}else if(ratings.length === 2)ratings.forEach(rating => {%>
+                    <div class="comment-container">
+                        <div class="comment-leftPart">
+                            <svg class="svg-star">
+                                <use href="/symbol-defs.svg#icon-star-full"></use>
+                            </svg>
+                            <div class="commentator">
+                                <p style="text-align: center;">By <%=rating.fromUser%> <br><%=rating.rating%>/5</p>
+                            </div>
+                        </div>
+                        <p class="comment-text">
+                            <%=rating.comment%>
+                        </p>
+                    </div>
+                <%})%>
+            </section>
+        <%}%>
+        <section class="actions">
+            <%if(userType !== "Guest"){%>
+                <form action="/home/commentDev" method="GET">
+                    <h2 class="comments-title">Comment <%=developer.username%></h2>
+                    <textarea placeholder="<%=developer.username%> is an awesome dev!" name="comment" id="comment" cols="30" rows="10"></textarea>
+                    <input type="hidden" value="<%=developer.username%>" name="developerUsername" id="developerUsername">
+                    <input type="submit" value="Submit">
+                </form>
+            <%}%>
+            <%if(userType === "Customer"){%>
+                <form class="rateForm" action="/customer/rateDev" method="GET">
+                    <h2 class="comments-title">Rate <%=developer.username%></h2>
+                    <label for="rating">Maximum rating score is 5!</label>
+                    <input autocomplete="off" type="number" name="rating" id="rating" min="0" max="5" step="0.1">
+                    <h3>Add a comment with your rating!</h3>
+                    <textarea name="ratingComment" id="ratingComment" cols="30" rows="10"></textarea>
+                    <input type="hidden" name="developerUsername" id="developerUsername" value="<%=developer.username%>">
+                    <input type="submit" value="Submit">
+                </form>
+            <%}%>
+        </section>
+    </div>
+    <script src="/javascript/searchCustomer.js"></script>
+    <script src="/javascript/navbar.js"></script>
+    <script src="/javascript/findLoggedInUser.js"></script>
+</body>
+
+</html>
