@@ -20,4 +20,5 @@ router.get("/customer/getNotifications" , CustomerRoutes.getNotifications);
 router.get("/customer/removeNotification/:fromUser" , CustomerRoutes.removeNotification);
 router.get("/customer/rateDev"  , CustomerRoutes.rateDeveloper);
 
+
 module.exports = router;

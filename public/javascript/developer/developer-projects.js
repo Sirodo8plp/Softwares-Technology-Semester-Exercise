@@ -87,7 +87,7 @@ async function showProjects() {
                     </p>
                     <input type="checkbox" name="agreementCheckbox" id="${"agreeTAC" + count}">
                     <label for="${"agreeTAC" + count}">By ticking the box you agree to the above statement and/or to further consequences.</label>
-                    <a href="/developer/completeProject/${project._id}" class="finalizeProject-waiting" id="${"finalize"+count}">Continue</a>
+                    <a href="/project/developer/completeProject/${project._id}" class="finalizeProject-waiting" id="${"finalize"+count}">Continue</a>
                     <a href="#${"project-container" + count}" class="cancel-terms" id="${"cancelTAC" + count}">Cancel</a>
                 </div>
             </div>`;

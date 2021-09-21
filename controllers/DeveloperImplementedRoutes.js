@@ -280,8 +280,22 @@ module.exports.completeProject = async (req, res) => {
         _id: projectID,
     }
     const update = {
-        status: "Completed"
+        status: "Completed",
+        completedByDeveloper: true
     }
+    let project = Project.findOne(filter);
+    let notification = new Notification({
+        fromUser: req.app.locals.user.username,
+        toUser: project.projectOwner,
+        notification: `${req.app.locals.user.username} has completed '${project.title}'`,
+        date: new Date().toLocaleDateString(),
+        actions: `
+        <a class="view-link" href="/customer/removeNotification/${req.app.locals.user.username}" 
+        style='text-align:center'>Agree to completion</a>
+        <a class="view-link" href="/customer/removeNotification/${req.app.locals.user.username}" 
+        style='text-align:center'>Remove</a>
+        `
+    });
     await Project.findOneAndUpdate(filter, update);
     res.redirect('/developer/projects');
 }

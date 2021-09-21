@@ -26,5 +26,6 @@ router.get("/project/DeveloperCancellsOffer/:username/:projectTitle" , ProjectIm
 router.get("/project/DeveloperCompletesOffer/:developerUsername/:projectTitle" , ProjectImplementedRoutes.DeveloperCompletesOffer);
 router.get("/project/recommendDev/:developerUsername/:projectID", ProjectImplementedRoutes.recommendProject);
 router.get("/project/viewDetails/:projectID" , ProjectImplementedRoutes.viewDetails);
+router.get("/project/developer/completeProject/:projectID" , ProjectImplementedRoutes.devCompletedProject);
 
 module.exports = router;

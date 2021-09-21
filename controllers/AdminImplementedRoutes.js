@@ -9,6 +9,8 @@ const Customer = require(__dirname + "/../models/customer").customerModel;
 const Project = require(__dirname + "/../models/project").projectModel;
 const Notification = require(__dirname + "/../models/notification").notificationModel;
 const Developer = require(__dirname + "/../models/developer").developerModel;
+const Rating = require(__dirname + "/../models/rating").ratingModel;
+const Comment =require(__dirname + "/../models/comment").commentModel;
 
 module.exports.general = async (req, res) => {
     res.render("admin/admin-general");
@@ -93,8 +95,6 @@ module.exports.deleteCustomer = async (req, res) => {
             username: customer.username
         });
 
-        
-
         await Customer.findOneAndDelete({
             username: customer.username
         });
@@ -127,10 +127,6 @@ module.exports.deleteDeveloper = async (req, res) => {
             fromUser: developer.username
         });
 
-        await Project.deleteMany({
-            projectOwner: developer.username
-        });
-
         await User.findOneAndDelete({
             username: developer.username
         });
@@ -138,6 +134,19 @@ module.exports.deleteDeveloper = async (req, res) => {
         await Developer.findOneAndDelete({
             username: developer.username
         });
+
+        await Comment.deleteMany({
+            toUser: developer.username
+        });
+
+        await Comment.deleteMany({
+            fromUser: developer.username
+        });
+
+        await Rating.deleteMany({
+            toUser: developer.username
+        });
+
         res.redirect("/admin/developers");
     } catch (error) {
         console.error(error)
@@ -157,6 +166,8 @@ module.exports.deleteProject = async (req, res) => {
         await Project.findOneAndDelete({
             title: project.title
         });
+
+        res.redirect('/admin/projects');
     } catch (error) {
         console.error(error)
     }

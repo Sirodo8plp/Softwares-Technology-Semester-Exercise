@@ -4,5 +4,3 @@ postcss.config.js
 tailwind.config.js
 /sass
 node_modules
-.env
-WorkFlow

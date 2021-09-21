@@ -134,7 +134,7 @@ module.exports.cancelProjectCustomer = async (req, res) => {
     try {
         let project = await Project.findById(req.params.id);
         console.log(project);
-        if(project.developer !== ""){
+        if (project.developer !== "") {
             let notification = new Notification({
                 fromUser: req.app.locals.user.username,
                 toUser: project.developer,
@@ -149,12 +149,12 @@ module.exports.cancelProjectCustomer = async (req, res) => {
         }
         await Project.findByIdAndUpdate({
             _id: req.params.id,
-        } , {
+        }, {
             status: "Cancelled"
         });
         res.redirect("/customer/projects");
     } catch (error) {
-            console.error(error)
+        console.error(error)
     }
 }
 
@@ -449,4 +449,34 @@ module.exports.viewDetails = async (req, res) => {
         "viewSearchResult/viewProject", {
             project
         });
+}
+
+module.exports.devCompletedProject = async (req, res) => {
+    let projectID = req.params.projectID;
+    const filter = {
+        _id: projectID,
+    }
+    const update = {
+        status: "Completed",
+        completedByDeveloper: true
+    }
+    let project = await Project.findOne(filter);
+
+    await Notification.deleteMany({projectInvolved: project.title});
+    
+    let notification = new Notification({
+        fromUser: req.app.locals.user.username,
+        toUser: project.projectOwner,
+        notification: `${req.app.locals.user.username} has completed '${project.title}'`,
+        date: new Date().toLocaleDateString(),
+        projectInvolved: project.title,
+        actions: `
+        <a class="view-link" href="/project/customer/completeProject/${projectID}" 
+        style='text-align:center'>Agree to completion</a>
+        <a class="view-link" href="/customer/removeNotification/${req.app.locals.user.username}" 
+        style='text-align:center'>Remove</a>`
+    });
+    await notification.save();
+    await Project.findOneAndUpdate(filter, update);
+    res.redirect('/developer/projects');
 }
