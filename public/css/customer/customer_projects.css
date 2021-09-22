@@ -351,3 +351,23 @@ label{
     grid-column: 1/4;
     text-align: center;
 }
+
+.grid-link-complete{
+    width: max-content;
+    height: max-content;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    color: white;
+    transition: all .4s ease;
+    margin: 0 auto;
+    border: 1px solid transparent;
+}
+
+.grid-link-complete:hover {
+    text-decoration: none !important;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}

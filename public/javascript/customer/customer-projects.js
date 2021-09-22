@@ -89,11 +89,7 @@ async function showProjects() {
                                 <input type="checkbox" class="settingInput" ${project.acceptedByDeveloper ? "checked" : ""} id="acceptedByDev${count}">
                                 <span class="slider"><span class="ball"></span></span>
                             </label>
-                            <label id="completedByDevLabel${count}" class="switch completedByDev ${project.completedByDeveloper ? "" : "disabled"}" for="completedByDev">Completed By Developer: ${project.completedByDeveloper ? "Yes" : "No"}
-                                <span class="slider"><span class="ball"></span></span>
-                                <input type="checkbox" class="settingInput" ${project.completedByDeveloper ? "checked" : ""} id="completedByDev${count}">
-                                <span class="slider"><span class="ball"></span></span>
-                            </label>
+                            ${project.status === "Completed" ? "No further actions are allowed." : "<a href='/project/customer/completeProject/${project._id}' class='grid-link-complete'>Complete Project</a>"}
                             <p class="acceptedByCustomer" id="acceptedByCustomer${count}">Accepted By You: ${project.acceptedByCustomer ? "Yes" : "No"}</p>
                             <p class="completedByCustomer" id="completedByCustomer${count}">Completed By You: ${project.completedByCustomer ? "Yes" : "No"}</p>
                             ${project.status === "In Progress" ? `
